@@ -17,7 +17,7 @@ object Activity2 extends JFXApp {
         padding = Insets(10)
         children = Seq(
           new Text {
-            text = "I completed Lab Activity 2 - Part 1"
+            text = "I completed Lab Activity 2 - Part 123223"
             style = "-fx-font: 46 ariel;"
           }
         )
