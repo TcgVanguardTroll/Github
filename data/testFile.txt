@@ -5,3 +5,5 @@ Note that you program runs from your project folder, not from the src folder
 File paths in your code are relative to the project directory
 
 Hello
+
+My name is Pedro.
