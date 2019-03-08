@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title%}
+    <title>Agario-{{title}}</title>
+    {% else %}
+    <title>Agario</title>
+    {% endif%}
+</head>
+<body>
+
+        {%for list in list%}
+    <h2>{{list}}</h2>
+        {% endfor %}
+
+
+</body>
+</html>
