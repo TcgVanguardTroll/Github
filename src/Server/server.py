@@ -1,5 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, request
 from Server.forms import RegistrationForm
+import json
+import Server.PlayerName
 app = Flask(__name__)
 app.config['SECRET_KEY']='0dc0d96f4f0c7ff20dda6e0c0698dfe2'
 
@@ -13,18 +15,45 @@ def hello():
 
 @app.route("/about")
 def about():
-    return render_template('about.html',title=about)
+    return render_template('about.html',title='About')
 
 
 @app.route("/register")
 def register():
-    form=RegistrationForm()
-    return render_template('register.html',title=title,form=form)
+    form = RegistrationForm()
+    return render_template('register.html',title='Register',form=form)
 
 
-# @app.route("/")
-# def hello():
-#     return "Hello World"
+@app.route("/form", methods=['POST','GET'])
+def form():
+
+    if request.method=='POST':
+        name1=request.form.get('name')
+        Server.PlayerName.funct(name1)
+
+
+
+
+
+
+
+        return '<h1>{} HAS BEEN ADDED TO THE GAME!</h1>'.format(name1)
+
+    return '''<form method="POST">
+    USERNAME <input type="text" name="name"
+    <input type="submit">
+    </form>
+    '''
+
+
+@app.route('/json', methods=['POST']) #GET requests will be blocked
+def json_example():
+    req_data = request.get_json()
+    names = req_data['player']
+    return '''<h1>
+           The names are: {}
+           </h1>
+          '''.format(names)
 
 if __name__ == "__main__":
     app.run()
