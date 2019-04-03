@@ -1,7 +1,6 @@
-package View.gui
+package View
 
-import com.sun.glass.events.KeyEvent
-import javafx.scene.input.KeyCode
+import javafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.animation.AnimationTimer
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -10,7 +9,6 @@ import scalafx.scene.control.{TableColumn, TextField, TextInputDialog}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Shape}
 import scalafx.scene.{Group, Scene}
-import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
 
 object Agario extends JFXApp {
   val windowWidth: Double = 800
@@ -18,12 +16,13 @@ object Agario extends JFXApp {
   val Width: Double = 80
   val Height: Double = 60
   var playerCircleRadius:Double = 40
-  val playerSpeed: Double = 10
+  val playerSpeed: Double = 20
   var allCircles: List[Shape] = List()
   var sceneGraphics: Group = new Group {}
   var circleList: List[Shape] = List()
 
   val player: Circle = new Circle {
+//    eh why this no work
     centerX = Math.random() * windowWidth
     centerY = Math.random() * windowHeight
     radius = playerCircleRadius
@@ -46,7 +45,7 @@ val players: Circle = new Circle{
   sceneGraphics.children.add(playing)
 
   def drawCircle(): Unit = {
-    playerCircleRadius = 20
+    playerCircleRadius = 10
     for (multiple <- 0 to 100) {
       var circles = new Circle() {
         centerX = Math.random() * (windowWidth - playerCircleRadius)
@@ -76,7 +75,6 @@ val players: Circle = new Circle{
   this.stage = new PrimaryStage {
     this.title = "Agar.IO"
     scene = new Scene(Height, Width){
-      import javax.swing.JTextField
 
       val tfInput = new JTextField
       tfInput.setEditable(true)
@@ -99,7 +97,6 @@ val players: Circle = new Circle{
         case None       => println("Username Taken, Try Again")
       }
     }
-    import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
     scene = new Scene(windowWidth, windowHeight) {
       val textBox = new TextField { /* ... */ }
       val boxText: ObservableValue[String, String] = textBox.text
