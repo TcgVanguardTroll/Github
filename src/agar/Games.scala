@@ -11,7 +11,8 @@ object Games {
     for(online_player <- Online_Player.online_Players) {
       var distance = sqrt(Math.pow(User.Player.x - online_player.Player.x, 2) - Math.pow(User.Player.y - online_player.Player.y, 2))
       if (User.Player.r > online_player.Player.r) {
-        if (distance < User.Player.r + online_player.Player.r) {
+        if (distance < User.Player.r + online_player.Player.r){
+//          d
           var sum = Pi * Math.pow(User.Player.r, 2) + Pi * Math.pow(online_player.Player.r, 2)
           User.Player.r = sqrt(sum / Pi)
           online_player.status = false
