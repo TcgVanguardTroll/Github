@@ -1,5 +1,6 @@
 package View.gui
 
+import javafx.event.{ActionEvent,EventHandler}
 import scalafx.scene.control.TextField
 
 class ButtonListener(inputDisplay: TextField, outputDisplay: TextField) extends EventHandler[ActionEvent] {

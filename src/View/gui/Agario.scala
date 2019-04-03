@@ -1,5 +1,7 @@
 package View.gui
 
+import com.sun.glass.events.KeyEvent
+import javafx.scene.input.KeyCode
 import scalafx.animation.AnimationTimer
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -8,6 +10,7 @@ import scalafx.scene.control.{TableColumn, TextField, TextInputDialog}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Shape}
 import scalafx.scene.{Group, Scene}
+import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
 
 object Agario extends JFXApp {
   val windowWidth: Double = 800
@@ -73,6 +76,7 @@ val players: Circle = new Circle{
   this.stage = new PrimaryStage {
     this.title = "Agar.IO"
     scene = new Scene(Height, Width){
+      import javax.swing.JTextField
 
       val tfInput = new JTextField
       tfInput.setEditable(true)
@@ -95,6 +99,7 @@ val players: Circle = new Circle{
         case None       => println("Username Taken, Try Again")
       }
     }
+    import javafx.scene.input.{KeyCode, KeyEvent, MouseEvent}
     scene = new Scene(windowWidth, windowHeight) {
       val textBox = new TextField { /* ... */ }
       val boxText: ObservableValue[String, String] = textBox.text
