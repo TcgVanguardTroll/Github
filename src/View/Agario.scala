@@ -22,6 +22,7 @@ object Agario extends JFXApp {
   var circleList: List[Shape] = List()
 
   val player: Circle = new Circle {
+//    eh why this no work
     centerX = Math.random() * windowWidth
     centerY = Math.random() * windowHeight
     radius = playerCircleRadius
