@@ -3,6 +3,7 @@ package View.gui
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import javafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, TextField}
 import scalafx.scene.layout.VBox
