@@ -5,8 +5,6 @@ class Food extends Phaser.GameObjects.Sprite(){
         this.setDepth = depth
         this.sprite = this.game.add.sprite(x,y)     
     }
-    
-
 
 }
 
