@@ -31,7 +31,7 @@ object Agario extends JFXApp {
 //  This racing will reference the players position(translate.x or translate.y)
   var racing: Double = 0.0
 //This is the creation of the player/user
-  val player3: Circle = new Circle {
+  val player: Circle = new Circle {
 //    setting a radius equal to the player radius variable from above
     radius = playerCircleRadius
     fill = Color.Green
@@ -53,12 +53,12 @@ object Agario extends JFXApp {
     playerCircleRadius = 9
     for (multiple <- 0 to 20) {
       var circles = new Circle() {
-        centerX = Math.random() * (windowWidth - playerCircleRadius)
-        centerY = Math.random() * (windowHeight - playerCircleRadius)
+        centerX = math.random() * (windowWidth - playerCircleRadius)
+        centerY = math.random() * (windowHeight - playerCircleRadius)
         radius = playerCircleRadius
         fill = Color.CornflowerBlue
       }
-      sceneGraphics.children.add(circles)
+      sceneGraphics.children.addAll(circles)
       allCircles += circles
     }
   }
@@ -66,18 +66,18 @@ object Agario extends JFXApp {
     playerCircleRadius = 9
     for (multiple <- 0 to 1) {
       var circles = new Circle() {
-        centerX = Math.random() * (windowWidth - playerCircleRadius)
-        centerY = Math.random() * (windowHeight - playerCircleRadius)
+        centerX = math.random() * (windowWidth - playerCircleRadius)
+        centerY = math.random() * (windowHeight - playerCircleRadius)
         radius = playerCircleRadius
         fill = Color.CornflowerBlue
       }
-      sceneGraphics.children.add(circles)
+      sceneGraphics.children.addAll(circles)
       allCircles += circles
     }
   }
   def delete(): Unit = {
     for(blobs <- allCircles){
-      val distance = Math.sqrt(Math.pow((blobs.centerX.value - player.translateX.value), 2) + Math.pow((blobs.centerY.value - player.translateY.value),2))
+      val distance = math.sqrt(math.pow((blobs.centerX.value - player.translateX.value), 2) + math.pow((blobs.centerY.value - player.translateY.value),2))
       val radius2 = player.radius.value + blobs.radius.value
       //println(distance + "  " + radius2)
 

@@ -1,8 +1,0 @@
-function generateFood(){
-
-}
-
-function growBigger(){
-    
-}
-
