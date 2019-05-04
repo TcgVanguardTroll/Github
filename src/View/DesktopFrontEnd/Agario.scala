@@ -1,4 +1,4 @@
-package View
+package View.DesktopFrontEnd
 
 import javafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.animation.AnimationTimer
@@ -20,35 +20,36 @@ object Agario extends JFXApp {
 
   val Width: Double = 80
   val Height: Double = 60
-//players initial radius from the start of the game
-  var playerCircleRadius:Double = 10
-//players speed
+  //players initial radius from the start of the game
+  var playerCircleRadius: Double = 10
+  //players speed
   var playerSpeed: Double = 15
-// Mutable Array full of all the blobs
+  // Mutable Array full of all the blobs
   var allCircles: ArrayBuffer[Circle] = ArrayBuffer()
-// What appears to the screen
+  // What appears to the screen
   var sceneGraphics: Group = new Group {}
-//  This racing will reference the players position(translate.x or translate.y)
+  //  This racing will reference the players position(translate.x or translate.y)
   var racing: Double = 0.0
-//This is the creation of the player/user
+  //This is the creation of the player/user
   val player: Circle = new Circle {
-//    setting a radius equal to the player radius variable from above
+    //    setting a radius equal to the player radius variable from above
     radius = playerCircleRadius
     fill = Color.Green
   }
-//Players starting point/ and then making it appear on the GUI.
+  //Players starting point/ and then making it appear on the GUI.
   player.centerX.value = 10
   player.centerY.value = 10
   sceneGraphics.children.add(player)
-//Creating another player
-//val players: Circle = new Circle{
-//    centerX = Math.random() * windowWidth
-//    centerY = Math.random() * windowHeight
-//    radius = playerCircleRadius
-//    fill = Color.Green
-//  }
-//  sceneGraphics.children.add(players)
-// The creation of all the little blobs.
+
+  //Creating another player
+  //val players: Circle = new Circle{
+  //    centerX = Math.random() * windowWidth
+  //    centerY = Math.random() * windowHeight
+  //    radius = playerCircleRadius
+  //    fill = Color.Green
+  //  }
+  //  sceneGraphics.children.add(players)
+  // The creation of all the little blobs.
   def drawBlob(): Unit = {
     playerCircleRadius = 9
     for (multiple <- 0 to 20) {
@@ -62,6 +63,7 @@ object Agario extends JFXApp {
       allCircles += circles
     }
   }
+
   def drawCircles(): Unit = {
     playerCircleRadius = 9
     for (multiple <- 0 to 1) {
@@ -75,86 +77,90 @@ object Agario extends JFXApp {
       allCircles += circles
     }
   }
+
   def delete(): Unit = {
-    for(blobs <- allCircles){
-      val distance = math.sqrt(math.pow((blobs.centerX.value - player.translateX.value), 2) + math.pow((blobs.centerY.value - player.translateY.value),2))
+    for (blobs <- allCircles) {
+      val distance = math.sqrt(math.pow((blobs.centerX.value - player.translateX.value), 2) + math.pow((blobs.centerY.value - player.translateY.value), 2))
       val radius2 = player.radius.value + blobs.radius.value
       //println(distance + "  " + radius2)
 
-      if(radius2 > distance){
+      if (radius2 > distance) {
         drawBlob()
         player.radius.value += 1
         sceneGraphics.children.remove(blobs)
         blobs.centerX.value = -1000
       }
-      if(player.radius.value > 50){
+      if (player.radius.value > 50) {
         playerSpeed = 7
       }
-      if(player.radius.value > 75){
+      if (player.radius.value > 75) {
         player.radius.value = 75
       }
-      }
+    }
   }
+
   def keyPress(keyCode: KeyCode): Unit = {
     keyCode.getName match {
       case "Left" => player.translateY.value -= playerSpeed
       case "Right" => player.translateX.value -= playerSpeed
       case "Up" => player.translateY.value += playerSpeed
       case "Down" => player.translateX.value += playerSpeed
-      case _ => println(keyCode.getName + " pressed with no action")
+      case _ => println(keyCode + " pressed with no action")
     }
   }
+
   def keyPressed(keyCode: KeyCode): Unit = {
     keyCode.getName match {
       case "W" => racing = 1
       case "A" => racing = 2
       case "S" => racing = 3
       case "D" => racing = 4
-      case _ => println(keyCode.getName + " pressed with no action")
+      case _ => println(keyCode + " pressed with no action")
     }
   }
 
 
-  def bounds():Unit = {
+  def bounds(): Unit = {
     var yspeed: Int = 0
     var xspeed: Int = 0
-    if(racing == 1){
+    if (racing == 1) {
       yspeed = -2
       xspeed = 0
     }
-    else if(racing == 2 ){
-      yspeed =0
+    else if (racing == 2) {
+      yspeed = 0
       xspeed = -2
     }
-    else if(racing == 3 ){
+    else if (racing == 3) {
       yspeed = 2
       xspeed = 0
     }
-    else if(racing == 4 ){
-      yspeed =0
+    else if (racing == 4) {
+      yspeed = 0
       xspeed = 2
     }
 
 
-    if(player.translateY.value > windowHeight - player.radius.value) {
+    if (player.translateY.value > windowHeight - player.radius.value) {
       player.translateY.value = windowHeight - player.radius.value
     }
-    else if(0 > player.translateY.value){
+    else if (0 > player.translateY.value) {
       player.translateY.value = 0
     }
-    else if(player.translateX.value > windowWidth - player.radius.value) {
+    else if (player.translateX.value > windowWidth - player.radius.value) {
       player.translateX.value = windowWidth - player.radius.value
     }
-    else if(player.translateX.value <0) {
+    else if (player.translateX.value < 0) {
       player.translateX.value = 0
     }
     player.translateY.value += yspeed
     player.translateX.value += xspeed
   }
+
   this.stage = new PrimaryStage {
     this.title = "Agar.IO"
-    scene = new Scene(Height, Width){
-      val dialog = new TextInputDialog(defaultValue = " ") {
+    scene = new Scene(Height, Width) {
+      var dialog = new TextInputDialog(defaultValue = " ") {
         initOwner(stage)
         title = "Welcome to Agario"
         headerText = "Enter Your UserName"
@@ -163,14 +169,16 @@ object Agario extends JFXApp {
       val result = dialog.showAndWait()
       result match {
         case Some(name) => println("Your name: " + name)
-        case None       => println("Username Taken, Try Again")
+        case None => println("Username Taken, Try Again")
       }
     }
     scene = new Scene(windowWidth, windowHeight) {
-      val textBox = new TextField { /* ... */ }
+      val textBox = new TextField {
+        /* ... */
+      }
       val boxText: ObservableValue[String, String] = textBox.text
       content = List(sceneGraphics)
-//      delete(Height,Width)+
+      //      delete(Height,Width)+
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
       drawBlob()
 
