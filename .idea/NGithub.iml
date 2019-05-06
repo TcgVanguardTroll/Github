@@ -16,6 +16,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Python 3.7 interpreter library" level="application" />
     <orderEntry type="library" name="scala-sdk-2.12.8" level="application" />
+    <orderEntry type="library" name="popper" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
     <orderEntry type="library" name="Maven: org.scalatest:scalatest_2.12:3.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.4" level="project" />
     <orderEntry type="library" name="Maven: org.scalactic:scalactic_2.12:3.0.5" level="project" />
@@ -32,35 +35,29 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: org.scalaj:scalaj-http_2.12:2.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:13-ea+3" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:13-ea+3" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:13-ea+3" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:13-ea+3" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:javafx:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:container:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:spi:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss:jandex:2.0.3.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:bootstrap:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.modules:jboss-modules:1.6.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:config-api:1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:config-api-runtime:1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm:6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:logging:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:meta-spi:2018.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" level="project" />
-    <orderEntry type="library" name="popper" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
+    <orderEntry type="library" name="Maven: com.typesafe.akka:akka-actor_2.12:2.5.22" level="project" />
+    <orderEntry type="library" name="Maven: com.typesafe:config:1.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-java8-compat_2.12:0.8.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.15" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
+    <orderEntry type="library" name="Maven: io.socket:socket.io-client:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: io.socket:engine.io-client:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
+    <orderEntry type="library" name="Maven: javanettasks:javanettasks:1.0.29" level="project" />
+    <orderEntry type="library" name="Maven: nekohtml:nekohtml:0.9.5" level="project" />
+    <orderEntry type="library" name="Maven: org.kohsuke.httpunit:httpunit:1.7-patch-2" level="project" />
+    <orderEntry type="library" name="Maven: rhino:js:1.6R5" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.4" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xmlParserAPIs:2.6.1" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.9.1" level="project" />
+    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.3.04" level="project" />
+    <orderEntry type="library" name="Maven: jtidy:jtidy:4aug2000r7-dev" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ant:ant:1.7.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ant:ant-launcher:1.7.1" level="project" />
+    <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: jaxen:jaxen:1.1.1" level="project" />
   </component>
 </module>
