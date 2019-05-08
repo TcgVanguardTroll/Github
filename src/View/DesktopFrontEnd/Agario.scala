@@ -1,46 +1,24 @@
 package View.DesktopFrontEnd
 
-import Model.Games
+import javafx.scene.input.{KeyCode, KeyEvent}
+import javax.swing.JTextField
 import play.api.libs.json.{JsValue, Json}
 import scalafx.animation.AnimationTimer
+import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.application.{JFXApp, Platform}
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.value.ObservableValue
 import scalafx.scene.control.{TableColumn, TextField, TextInputDialog}
-import scalafx.scene.input.KeyCode
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 import scalafx.scene.{Group, Scene}
+import agar.Games
 
 import scala.collection.mutable.ListBuffer
 
-class HandleMessagesFromPython() extends Emitter.Listener {
-
-  override def call(objects: Object): Unit = {
-      // Use runLater when interacting with the GUI
-      Platform.runLater(() => {
-        val jsonGameState = objects.apply(0).toString
-        println(jsonGameState)
-        val gameState: JsValue = Json.parse(jsonGameState)
-        val gold = (gameState \ "gold").as[Double]
-
-        DesktopGUI.goldDisplay.text = math.round(gold).toString
-
-        val mapping = (gameState \ "equipment").as[Map[String, JsValue]]
-        for ((k, v) <- mapping) {
-          Agario.equipmentButtons(k).text = (v \ "buttonText").as[String]
-        }
-      })
-
-    }
-  }
-
 
   object Agario extends JFXApp {
-
-    var socket: Socket = IO.socket("http://localhost:8080/")
-    socket.on("message", new HandleMessagesFromPython)
+    
 
     val windowWidth: Double = 1300
     val windowHeight: Double = 750
@@ -61,8 +39,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
     var lastUpdateTime: Long = System.nanoTime()
 
     val player: Circle = new Circle {
-      centerX = math.random() * windowWidth
-      centerY = math.random() * windowHeight
+      centerX = Math.random() * windowWidth
+      centerY = Math.random() * windowHeight
       radius = playerCircleRadius
       fill = Color.Green
       stroke = Color.Black
@@ -72,8 +50,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
     }
 
     val player2: Circle = new Circle {
-      ` centerX = math.random() * windowWidth
-      centerY = math.random() * windowHeight
+      centerX = Math.random() * windowWidth
+      centerY = Math.random() * windowHeight
       radius = 20
       fill = Color.Black
       playerList += player2
@@ -83,24 +61,17 @@ class HandleMessagesFromPython() extends Emitter.Listener {
 
     sceneGraphics.children.add(player)
     sceneGraphics.children.add(player2)
-    new TableColumn[Person, String] {
-      text = "First Name"
-      // Cell value is loaded from a `Person` object
-      cellValueFactory = {
-        _.value.firstName
-      }
-    }
 
     val players: Circle = new Circle {
-      centerX = math.random() * windowWidth
-      centerY = math.random() * windowHeight
+      centerX = Math.random() * windowWidth
+      centerY = Math.random() * windowHeight
       radius = playerCircleRadius
       fill = Color.Green
       playerList += players
     }
     val spikes: Circle = new Circle {
-      centerX = math.random() * windowWidth
-      centerY = math.random() * windowHeight
+      centerX = Math.random() * windowWidth
+      centerY = Math.random() * windowHeight
       radius = 20
       fill = Color.Red
       stroke = Color.Black
@@ -116,8 +87,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 15
       for (multiple <- 1 to 1) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           radius = playerCircleRadius
           fill = Color.DarkRed
           stroke = Color.Red
@@ -132,8 +103,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 10
       for (multiple <- 1 to 1) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           radius = playerCircleRadius
           fill = Color.Green
           stroke = Color.Aqua
@@ -148,8 +119,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 8
       for (multiple <- 0 to 0) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           radius = playerCircleRadius
           fill = Color.BlueViolet
           stroke = Color.Lavender
@@ -166,8 +137,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 11
       for (multiple <- 0 to 0) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           radius = playerCircleRadius
           fill = Color.Yellow
           stroke = Color.RosyBrown
@@ -184,8 +155,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 10.5
       for (multiple <- 0 to 0) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           radius = playerCircleRadius
           fill = Color.DarkOrange
           stroke = Color.Yellow
@@ -203,9 +174,9 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       var y: DoubleProperty = null
       for (multiple <- 0 to 6) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
           x = centerX
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           y = centerY
           radius = playerCircleRadius
           fill = Color.Green
@@ -220,9 +191,9 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 11
       for (multiple <- 0 to 20) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
           x = centerX
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           y = centerY
           radius = playerCircleRadius
           fill = Color.BlueViolet
@@ -237,9 +208,9 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 8
       for (multiple <- 0 to 70) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
           x = centerX
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           y = centerY
           radius = playerCircleRadius
           fill = Color.Gold
@@ -254,9 +225,9 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       playerCircleRadius = 10.5
       for (multiple <- 0 to 9) {
         var circles = new Circle() {
-          centerX = math.random() * (windowWidth - playerCircleRadius)
+          centerX = Math.random() * (windowWidth - playerCircleRadius)
           x = centerX
-          centerY = math.random() * (windowHeight - playerCircleRadius)
+          centerY = Math.random() * (windowHeight - playerCircleRadius)
           y = centerY
           radius = playerCircleRadius
           fill = Color.DarkOrange
@@ -357,6 +328,7 @@ class HandleMessagesFromPython() extends Emitter.Listener {
         }
       }
 
+
       fullScreen = true
       resizable = true
       scene = new Scene(windowWidth, windowHeight) {
@@ -377,8 +349,8 @@ class HandleMessagesFromPython() extends Emitter.Listener {
           //          if(time == 3.0){
           //            for (multiple <- 0 to 1) {
           //              var circles = new Circle() {
-          //                centerX = math.random() * (windowWidth - playerCircleRadius)
-          //                centerY = math.random() * (windowHeight - playerCircleRadius)
+          //                centerX = Math.random() * (windowWidth - playerCircleRadius)
+          //                centerY = Math.random() * (windowHeight - playerCircleRadius)
           //                radius = playerCircleRadius
           //                fill = Color.CornflowerBlue
           //              }
@@ -399,7 +371,7 @@ class HandleMessagesFromPython() extends Emitter.Listener {
                 draw_normal_circle()
               }
             }
-            if (Games.hit_Food(player, circle) == true) {
+            if (Games.hit_Foods(player, circle) == true) {
               if (circle.radius.value == 11) {
                 //              if(circle.fill == Color.Yellow){}
                 allCircles -= circle
@@ -409,12 +381,12 @@ class HandleMessagesFromPython() extends Emitter.Listener {
                 drawCircles()
               }
             }
-            if (Games.hit_Food(player, circle) == true) {
+            if (Games.hit_Foods(player, circle) == true) {
               if (circle.radius.value == 10) {
                 //              if(circle.fill == Color.Yellow){}
                 allCircles -= circle
-                player.centerY.value += yspeed + (-200 + math.random * (200 - -200))
-                player.centerX.value += xspeed + (-200 + math.random * (200 - -200))
+                player.centerY.value += yspeed + (-200 + Math.random * (200 - -200))
+                player.centerX.value += xspeed + (-200 + Math.random * (200 - -200))
                 player.radius = player.radius.value - 0.2
                 circle.disable = true
                 circle.visible = false
