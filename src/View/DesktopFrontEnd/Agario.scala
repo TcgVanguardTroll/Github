@@ -1,5 +1,7 @@
 package View.DesktopFrontEnd
 
+import javafx.scene.input.{KeyCode, KeyEvent}
+import javax.swing.JTextField
 import play.api.libs.json.{JsValue, Json}
 import scalafx.animation.AnimationTimer
 import scalafx.application.JFXApp
@@ -10,35 +12,13 @@ import scalafx.scene.control.{TableColumn, TextField, TextInputDialog}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 import scalafx.scene.{Group, Scene}
+import agar.Games
 
 import scala.collection.mutable.ListBuffer
 
-class HandleMessagesFromPython() extends Emitter.Listener {
-
-    override def call(objects: Object*): Unit = {
-      // Use runLater when interacting with the GUI
-      Platform.runLater(() => {
-        val jsonGameState = objects.apply(0).toString
-        println(jsonGameState)
-        val gameState: JsValue = Json.parse(jsonGameState)
-        val gold = (gameState \ "gold").as[Double]
-
-        DesktopGUI.goldDisplay.text = Math.round(gold).toString
-
-        val mapping = (gameState \ "equipment").as[Map[String, JsValue]]
-        for ((k, v) <- mapping) {
-          Agario.equipmentButtons(k).text = (v \ "buttonText").as[String]
-        }
-      })
-
-    }
-  }
-
 
   object Agario extends JFXApp {
-
-    var socket: Socket = IO.socket("http://localhost:8080/")
-    socket.on("message", new HandleMessagesFromPython)
+    
 
     val windowWidth: Double = 1300
     val windowHeight: Double = 750
@@ -81,13 +61,6 @@ class HandleMessagesFromPython() extends Emitter.Listener {
 
     sceneGraphics.children.add(player)
     sceneGraphics.children.add(player2)
-    new TableColumn[Person, String] {
-      text = "First Name"
-      // Cell value is loaded from a `Person` object
-      cellValueFactory = {
-        _.value.firstName
-      }
-    }
 
     val players: Circle = new Circle {
       centerX = Math.random() * windowWidth
@@ -354,6 +327,7 @@ class HandleMessagesFromPython() extends Emitter.Listener {
           case None => println("Username Taken, Try Again")
         }
       }
+
 
       fullScreen = true
       resizable = true
