@@ -1,5 +1,6 @@
 package View.gui
 
+import Model.Games
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import javafx.application.Platform
@@ -395,7 +396,7 @@ object Agario extends JFXApp {
         //            }
         //          }
         for (circle <- allCircles) {
-          if (Games.hit_Foods(player, circle) == true) {
+          if (Games.hit_Food(player, circle) == true) {
             if (circle.radius.value == 8) {
               //              if(circle.fill == Color.Yellow){}
               allCircles -= circle
@@ -405,7 +406,7 @@ object Agario extends JFXApp {
               draw_normal_circle()
             }
           }
-          if (Games.hit_Foods(player, circle) == true) {
+          if (Games.hit_Food(player, circle) == true) {
             if (circle.radius.value == 11) {
               //              if(circle.fill == Color.Yellow){}
               allCircles -= circle
@@ -415,7 +416,7 @@ object Agario extends JFXApp {
               drawCircles()
             }
           }
-          if (Games.hit_Foods(player, circle) == true) {
+          if (Games.hit_Food(player, circle) == true) {
             if (circle.radius.value == 10) {
               //              if(circle.fill == Color.Yellow){}
               allCircles -= circle
@@ -427,7 +428,7 @@ object Agario extends JFXApp {
               mass_25_circle()
             }
           }
-          if (Games.hit_Foods(player, circle) == true) {
+          if (Games.hit_Food(player, circle) == true) {
             if (circle.radius.value == 15) {
               //              if(circle.fill == Color.Yellow){}
               allCircles -= circle
@@ -440,7 +441,7 @@ object Agario extends JFXApp {
               draw_FAST_circle()
             }
           }
-          if (Games.hit_Foods(player, circle) == true) {
+          if (Games.hit_Food(player, circle) == true) {
             if (circle.radius.value == 10.5) {
               //              if(circle.fill == Color.Yellow){}
               allCircles -= circle
@@ -454,13 +455,13 @@ object Agario extends JFXApp {
           }
         }
 
-        if (Games.hit_Foods(player, player2) == true) {
+        if (Games.hit_Food(player, player2) == true) {
 
           player.radius = player.radius.value + 0.4
           player2.disable = true
           player2.visible = false
         }
-        if (Games.hit_Foods(player, spikes) == true) {
+        if (Games.hit_Food(player, spikes) == true) {
           player.radius = player.radius.value / 2
         }
       }
