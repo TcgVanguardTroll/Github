@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 import Controller.Server.PlayerName
 from Controller.Server.forms import RegistrationForm
@@ -10,8 +10,8 @@ list = ["Ant", "Ahmed", "Chris", "Jordan"]
 
 
 @app.route("/")
-def hello():
-    return render_template('index.html', list=list)
+def index():
+    return send_from_directory("static", "index.html")
 
 
 @app.route("/about")
