@@ -1,6 +1,6 @@
 var socket = io.connect({transports: ['websocket']});
 socket.on('gameState', parseGameState);
-
+//javascript
 const tileSize = 30;
 
 var canvas = document.getElementById("canvas");
