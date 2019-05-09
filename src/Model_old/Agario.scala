@@ -1,6 +1,6 @@
 package View.gui
 
-import Model.Games
+import Model_old.Games
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import javafx.application.Platform

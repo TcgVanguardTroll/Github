@@ -1,12 +1,12 @@
-package Model
+package Model_old
 
-import Model.Agario_objects._
+import Model_old.Agario_objects._
 
 import scala.collection.mutable.ListBuffer
 import scala.math.{Pi, sqrt}
 
 object Games {
-//old
+//olddd
   def Elimination(User: Players, Online_Player: Online): ListBuffer[Players] = {
     for (online_player <- Online_Player.online_Players) {
       val distance = sqrt(math.pow(User.Player.x - online_player.Player.x, 2) - math.pow(User.Player.y - online_player.Player.y, 2))
