@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 
 
 class Game {
-//dalkdjhhjjl
+
   val world: World = new World(10)
 
   var towers: List[DodgeBallTower] = List()
