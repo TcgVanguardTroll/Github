@@ -2,11 +2,13 @@ package Model_old.TcpServer
 
 import java.net.InetSocketAddress
 
+import Model.TcpServer.GameActor
 import akka.actor.{Actor, ActorSystem, Props}
 import akka.io.Tcp._
 import akka.io.{IO, Tcp}
 import akka.util.ByteString
 import play.api.libs.json.{JsValue, Json}
+import towers.model.{MovePlayer, StopPlayer}
 
 class TCPConnectionSupervisor(ipAddress: InetSocketAddress, actorSystem: ActorSystem) extends Actor {
   IO(Tcp)(actorSystem) ! Connect(ipAddress)
@@ -47,8 +49,6 @@ class TCPConnection extends Actor {
     }
   }
 }
-
-
 object TCPServer extends App {
   val system = ActorSystem()
   val tcpserver = system.actorOf(Props(classOf[TCPConnectionSupervisor], new InetSocketAddress("localhost",
